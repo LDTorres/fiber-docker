@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  api:
+    build: 
+      context: ./
+      dockerfile: dockerfile-local
+      args:
+        - HTTP_PROXY=${http_proxy}
+        - HTTPS_PROXY=${https_proxy}
+        - NO_PROXY=${no_proxy}
+        - API_PORT=${API_PORT}
+    container_name: fiber
+    working_dir: /go/src/app
+    ports:
+      - ${API_PORT}:${API_PORT}
+  
